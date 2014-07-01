@@ -1,10 +1,9 @@
 # 
-FROM rhel:latest
+FROM fedora:latest
 MAINTAINER Jan-Frode Myklebust <janfrode@tanso.net>
 
-RUN yum -y install https://dl.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm
 RUN yum -y update
-RUN yum -y --enablerepo=epel install trafficserver findutils
+RUN yum -y install trafficserver findutils
 
 # Drop all setuid setgid permissions:
 RUN find /usr -perm /6000 -exec chmod -s '{}' \;
